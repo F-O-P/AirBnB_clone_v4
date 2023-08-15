@@ -1,17 +1,7 @@
 $(document).ready(function () {
   const amenityDict = {};
 
-  function updateAPIStatus () {
-    $.get('http://0.0.0.0:5001/api/v1/status/', function (data, status) {
-      if (data.status === 'OK') {
-        $('DIV#api_status').addClass('available');
-      } else {
-        $('DIV#api_status').removeClass('available');
-      }
-    });
-  }
-
-updateAPIStatus();
+  updateAPIStatus();
 
   $('input[type=checkbox]').click(function () {
     if ($(this).is(':checked')) {
@@ -23,3 +13,15 @@ updateAPIStatus();
   }
   );
 });
+function updateAPIStatus () {
+  $.get('http://7d2e6eb84f44.654b0ff2.hbtn-cod.io:5001/api/v1/status/',  (data) => {
+    // $('div#api_status').append('<div>start</div>');
+    if (data.status === 'OK') {
+      $('div#api_status').addClass('available');
+      // $('div#api_status').append('<div>good</div>');
+    } else {
+      $('div#api_status').removeClass('available');
+      // $('div#api_status').append('<div>bad</div>');
+    }
+  });
+}
